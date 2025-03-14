@@ -1,0 +1,93 @@
+const apiURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+
+const formSearch = document.querySelector("form");
+const searchBtn = document.querySelector("#searchBtn");
+const input = document.querySelector("#input");
+
+searchBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  clearContent();
+  let searchMeal = input.value.trim();
+  if (searchMeal === "") {
+    alert("Please enter the name of the recipe you want to search");
+  }
+
+  fetch(apiURL + searchMeal)
+    .then((response) => response.json())
+    .then((data) => {
+      const meal = data.meals[0];
+      const recipeName = meal.strMeal;
+      const recipeCategory = meal.strCategory;
+      const recipeOrigin = meal.strArea;
+      const ingredients = [];
+
+      for (let i = 1; i <= 20; i++) {
+        const ingredient = meal[`strIngredient${i}`]?.trim();
+        const measure = meal[`strMeasure${i}`]?.trim();
+
+        if (ingredient && ingredient !== "") {
+          ingredients.push(`${ingredient} - ${measure}`.trim());
+        }
+      }
+
+      const instructions = meal.strInstructions
+        .split("\r\n\r\n") // Split steps by double line breaks
+        .map((step) => `<p>${step}</p>`) // Wrap each step in <p> tags
+        .join(""); // Join everything into a single string
+
+      const contentMeal = document.querySelector(".contentMeal");
+
+      // Create a panel for facts
+      const factsPanel = document.createElement("div");
+      factsPanel.classList.add("factsPanel");
+      contentMeal.appendChild(factsPanel);
+
+      const listFacts = document.createElement("ul");
+      listFacts.classList.add("listFacts");
+      factsPanel.appendChild(listFacts);
+      const li1 = document.createElement("li");
+      li1.innerText = `Recipe Name: ${recipeName}`;
+      listFacts.appendChild(li1);
+      const li2 = document.createElement("li");
+      li2.innerText = `Recipe Category: ${recipeCategory}`;
+      listFacts.appendChild(li2);
+      const li3 = document.createElement("li");
+      li3.innerText = `Recipe Origin: ${recipeOrigin}`;
+      listFacts.appendChild(li3);
+
+      // create a panel for ingredients
+      const ingredientsPanel = document.createElement("div");
+      ingredientsPanel.classList.add("ingredientsPanel");
+      contentMeal.appendChild(ingredientsPanel);
+
+      const ingredientList = document.createElement("ul");
+      ingredientList.classList.add("ingredientList");
+
+      ingredientsPanel.innerHTML = `<h3>Ingredients</h3>`;
+      for (let i = 0; i < ingredients.length; i++) {
+        const ingredient = ingredients[i];
+        const item = document.createElement("li");
+        item.innerText = ingredient;
+        ingredientList.append(item);
+      }
+      ingredientsPanel.append(ingredientList);
+
+      // create a panel for instructions
+      instructionsPanel = document.createElement("div");
+      instructionsPanel.classList.add("instructionsPanel");
+      contentMeal.appendChild(instructionsPanel);
+
+      instructionsPanel.innerHTML = `<h3>Instructions</h3>`;
+      instructionsPanel.innerHTML += instructions;
+
+      input.value = "";
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+function clearContent() {
+  const contentMeal = document.querySelector(".contentMeal");
+  contentMeal.innerHTML = "";
+}
