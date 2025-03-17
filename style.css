@@ -137,4 +137,67 @@ form{
     margin-left: 1.5rem;
     margin-bottom: 2rem;
 }
+    
+.error{
+    padding: 10px;
+    margin: 10px;
+}
 
+.containerSignin{
+    background: linear-gradient(45deg, #eba82c, #f25926);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin form{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    row-gap: 1rem;
+    margin: 10px 0px;
+}
+
+.signin input{
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    width: 50vh;
+}
+
+#signInBtn{
+    background-color: rgb(241, 228, 78);
+    color: rgb(248, 116, 16);
+    font-style: bold;
+    padding: 0.5rem 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+#signInBtn:hover{
+    color: rgb(221, 158, 109);
+    cursor: pointer;
+    background-color: #fff;  
+}
+
+
+#title{
+    color: #fff;
+    font-size: 2rem;
+}
+
+.goBackBtn{
+    background-color: rgb(78, 241, 86);
+    color: rgb(25, 18, 18);
+    font-style: bold;
+    padding: 0.5rem 0.5rem;
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.goBackBtn:hover{
+    color: rgb(221, 158, 109);
+    cursor: pointer;
+    background-color: #fff;
+}

@@ -1,10 +1,10 @@
 const apiURL = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
 
-const formSearch = document.querySelector("form");
+const formSearch = document.querySelector(".searchForm");
 const searchBtn = document.querySelector("#searchBtn");
 const input = document.querySelector("#input");
 
-searchBtn.addEventListener("click", (event) => {
+formSearch.addEventListener("submit", (event) => {
   event.preventDefault();
   clearContent();
   let searchMeal = input.value.trim();
@@ -32,7 +32,7 @@ searchBtn.addEventListener("click", (event) => {
 
       const instructions = meal.strInstructions
         .split("\r\n\r\n") // Split steps by double line breaks
-        .map((step) => `<p>${step}</p>`) // Wrap each step in <p> tags
+        .map((step) => `<p>${step}</p><br>`) // Wrap each step in <p> tags
         .join(""); // Join everything into a single string
 
       const contentMeal = document.querySelector(".contentMeal");
@@ -83,7 +83,11 @@ searchBtn.addEventListener("click", (event) => {
       input.value = "";
     })
     .catch((error) => {
-      console.log(error);
+      const contentMeal = document.querySelector(".contentMeal");
+      contentMeal.innerHTML = `<p>The recipe you searched for does not exist or could not be found.</p>`;
+      contentMeal.classList.add("error");
+      input.value = "";
+      //console.log(error);
     });
 });
 
