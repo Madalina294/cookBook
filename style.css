@@ -1,203 +1,194 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.body{
-    height: 100%;
+.body {
+  height: 100%;
 }
 
-.container{
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: auto;
-    min-height: 100vh;
+.container {
+  min-height: 100vh;
+  display: grid;
 }
 
-.main{
-    background-color: rgb(245, 232, 186);
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
+.main {
+  background-color: rgb(245, 232, 186);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.main h1{
-    font-size: 2rem;
-    margin-top: 3rem;
-    margin-bottom: 1rem;
-    color: rgb(230, 149, 88);
+.main h1 {
+  font-size: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  color: rgb(230, 149, 88);
 }
-form{
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    grid-template-rows: 1fr;
-    
+form {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr;
 }
-#searchBtn{
-    background-color: rgb(230, 149, 88);
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 0.5rem;
-    
+#searchBtn {
+  background-color: rgb(230, 149, 88);
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
 }
 
-#searchBtn:hover{
-    background-color: rgb(255, 255, 255);
-    color: rgb(230, 149, 88);
-    cursor: pointer;
+#searchBtn:hover {
+  background-color: rgb(255, 255, 255);
+  color: rgb(230, 149, 88);
+  cursor: pointer;
 }
 
-#input{
-    padding: 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    width: 50vh;
-    margin-right: 0.5rem;
-    height: 40px;
+#input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  width: 50vh;
+  margin-right: 0.5rem;
+  height: 40px;
 }
 
-.login{
-    background: linear-gradient(45deg, #eba82c, #efd3a6);
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.login {
+  background: linear-gradient(45deg, #eba82c, #efd3a6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
-.login div{
-    margin-top: 0.5rem;
+.login div {
+  margin-top: 0.5rem;
 }
 
-.login input{
-    padding: 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
+.login input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
 }
 
-#loginBtn{
-    background-color: rgb(242, 106, 9);
-    color: rgb(255, 255, 255);
-    font-style: bold;
-    padding: 0.5rem 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
+#loginBtn {
+  background-color: rgb(242, 106, 9);
+  color: rgb(255, 255, 255);
+  font-style: bold;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
 }
 
-#loginBtn:hover{
-    color: rgb(221, 158, 109);
-    cursor: pointer;
-    background-color: #fff;
-   
+#loginBtn:hover {
+  color: rgb(221, 158, 109);
+  cursor: pointer;
+  background-color: #fff;
 }
 
-.login h2{
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: #fff;
+.login h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
 }
 
-.login p{
-    color: #fff;
+.login p {
+  color: #fff;
 }
 
-.createAccount a{
-    text-decoration: none;
+.createAccount a {
+  text-decoration: none;
 }
 
-.contentMeal{
-    height: 100%;
+.contentMeal {
+  height: 100%;
 }
 
-.contentMeal ul{
-    list-style: none;
-    margin: 1.5rem;
-    
+.contentMeal ul {
+  list-style: none;
+  margin: 1.5rem;
 }
 
-.contentMeal li{
-    margin-bottom: 0.5rem;
+.contentMeal li {
+  margin-bottom: 0.5rem;
 }
 
-.ingredientsPanel h3{
-    margin-left: 1.5rem;
-    margin-bottom: -1rem;
+.ingredientsPanel h3 {
+  margin-left: 1.5rem;
+  margin-bottom: -1rem;
 }
 
-.instructionsPanel h3{
-
-    margin-bottom: 1rem;
+.instructionsPanel h3 {
+  margin-bottom: 1rem;
 }
 
-.instructionsPanel{
-    margin-left: 1.5rem;
-    margin-bottom: 2rem;
-}
-    
-.error{
-    padding: 10px;
-    margin: 10px;
+.instructionsPanel {
+  margin-left: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.containerSignin{
-    background: linear-gradient(45deg, #eba82c, #f25926);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.error {
+  padding: 10px;
+  margin: 10px;
 }
 
-.signin form{
-    display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr;
-    row-gap: 1rem;
-    margin: 10px 0px;
+.containerSignin {
+  background: linear-gradient(45deg, #eba82c, #f25926);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.signin input{
-    padding: 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    width: 50vh;
+.signin form {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+  margin: 10px 0px;
 }
 
-#signInBtn{
-    background-color: rgb(241, 228, 78);
-    color: rgb(248, 116, 16);
-    font-style: bold;
-    padding: 0.5rem 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
+.signin input {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  width: 50vh;
 }
 
-#signInBtn:hover{
-    color: rgb(221, 158, 109);
-    cursor: pointer;
-    background-color: #fff;  
+#signInBtn {
+  background-color: rgb(241, 228, 78);
+  color: rgb(248, 116, 16);
+  font-style: bold;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
 }
 
-
-#title{
-    color: #fff;
-    font-size: 2rem;
+#signInBtn:hover {
+  color: rgb(221, 158, 109);
+  cursor: pointer;
+  background-color: #fff;
 }
 
-.goBackBtn{
-    background-color: rgb(78, 241, 86);
-    color: rgb(25, 18, 18);
-    font-style: bold;
-    padding: 0.5rem 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
+#title {
+  color: #fff;
+  font-size: 2rem;
 }
 
-.goBackBtn:hover{
-    color: rgb(221, 158, 109);
-    cursor: pointer;
-    background-color: #fff;
+.goBackBtn {
+  background-color: rgb(78, 241, 86);
+  color: rgb(25, 18, 18);
+  font-style: bold;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.goBackBtn:hover {
+  color: rgb(221, 158, 109);
+  cursor: pointer;
+  background-color: #fff;
 }

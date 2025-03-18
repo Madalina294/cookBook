@@ -80,6 +80,32 @@ formSearch.addEventListener("submit", (event) => {
       instructionsPanel.innerHTML = `<h3>Instructions</h3>`;
       instructionsPanel.innerHTML += instructions;
 
+      const saveRecipeBtn = document.createElement("button");
+      saveRecipeBtn.innerText = "Save Recipe";
+      saveRecipeBtn.classList.add("saveRecipeBtn");
+
+      saveRecipeBtn.addEventListener("click", () => {
+        if (/*verify if user is logged->true*/ false) {
+          const recipe = {
+            name: recipeName,
+            category: recipeCategory,
+            origin: recipeOrigin,
+            ingredients: ingredients,
+            instructions: instructions,
+          };
+
+          // Add recipe to savedRecipes array in user object
+          const user = JSON.parse(localStorage.getItem("user"));
+          user.savedRecipes.push(recipe);
+          localStorage.setItem("user", JSON.stringify(user));
+          alert("Recipe saved successfully!");
+        } else {
+          window.open("login.html", "_self");
+        }
+      });
+
+      contentMeal.appendChild(saveRecipeBtn);
+
       input.value = "";
     })
     .catch((error) => {

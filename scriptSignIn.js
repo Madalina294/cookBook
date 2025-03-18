@@ -20,6 +20,7 @@ signInForm.addEventListener("submit", (event) => {
     let user = {
       username: username,
       password: password,
+      savedRecipes: [],
     };
     localStorage.setItem("user", user);
     signInForm.innerHTML = `<p>You have successfully signed in.</p>`;
