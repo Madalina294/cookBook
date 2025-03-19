@@ -85,7 +85,9 @@ formSearch.addEventListener("submit", (event) => {
       saveRecipeBtn.classList.add("saveRecipeBtn");
 
       saveRecipeBtn.addEventListener("click", () => {
-        if (/*verify if user is logged->true*/ false) {
+        let userStatus = JSON.parse(sessionStorage.getItem("userStatus"));
+        if (userStatus.status === "loggedIn") {
+          window.close("login.html");
           const recipe = {
             name: recipeName,
             category: recipeCategory,
@@ -100,7 +102,7 @@ formSearch.addEventListener("submit", (event) => {
           localStorage.setItem("user", JSON.stringify(user));
           alert("Recipe saved successfully!");
         } else {
-          window.open("login.html", "_self");
+          window.open("login.html", "_blank", "width=400,height=500");
         }
       });
 
@@ -120,4 +122,11 @@ formSearch.addEventListener("submit", (event) => {
 function clearContent() {
   const contentMeal = document.querySelector(".contentMeal");
   contentMeal.innerHTML = "";
+}
+
+function goBackAndClose() {
+  if (window.opener) {
+    window.opener.focus(); // Bring the previous tab into focus
+  }
+  window.close(); // Close the current tab
 }

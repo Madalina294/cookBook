@@ -16,13 +16,14 @@ signInForm.addEventListener("submit", (event) => {
   } else if (password !== passwordConfirm) {
     alert("The passwords do not match");
   } else {
-    console.log(username, password);
-    let user = {
+    let newUser = {
       username: username,
       password: password,
       savedRecipes: [],
     };
-    localStorage.setItem("user", user);
+
+    saveUser(newUser);
+
     signInForm.innerHTML = `<p>You have successfully signed in.</p>`;
     const goBackBtn = document.createElement("button");
     goBackBtn.classList.add("goBackBtn");
@@ -33,6 +34,12 @@ signInForm.addEventListener("submit", (event) => {
     signInForm.appendChild(goBackBtn);
   }
 });
+
+function saveUser(user) {
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  users.push(user);
+  localStorage.setItem("users", JSON.stringify(users));
+}
 
 function goBackAndClose() {
   if (window.opener) {
