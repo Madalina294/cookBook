@@ -80,33 +80,30 @@ formSearch.addEventListener("submit", (event) => {
       instructionsPanel.innerHTML = `<h3>Instructions</h3>`;
       instructionsPanel.innerHTML += instructions;
 
-      const saveRecipeBtn = document.createElement("button");
-      saveRecipeBtn.innerText = "Save Recipe";
-      saveRecipeBtn.classList.add("saveRecipeBtn");
+      const recipe = {
+        name: recipeName,
+        category: recipeCategory,
+        origin: recipeOrigin,
+        ingredients: ingredients,
+        instructions: instructions,
+      };
+      //need to know if the user is logged in, than save the recipe
 
-      saveRecipeBtn.addEventListener("click", () => {
-        let userStatus = JSON.parse(sessionStorage.getItem("userStatus"));
-        if (userStatus.status === "loggedIn") {
-          window.close("login.html");
-          const recipe = {
-            name: recipeName,
-            category: recipeCategory,
-            origin: recipeOrigin,
-            ingredients: ingredients,
-            instructions: instructions,
-          };
+      const logToSave = document.createElement("a");
+      logToSave.innerHTML = `<a href="login.html" target="_blank">Log to save recipe</a>`;
+      contentMeal.appendChild(logToSave);
 
-          // Add recipe to savedRecipes array in user object
-          const user = JSON.parse(localStorage.getItem("user"));
-          user.savedRecipes.push(recipe);
-          localStorage.setItem("user", JSON.stringify(user));
-          alert("Recipe saved successfully!");
-        } else {
-          window.open("login.html", "_blank", "width=400,height=500");
-        }
-      });
-
-      contentMeal.appendChild(saveRecipeBtn);
+      if (isLogged()) {
+        saveRecipeOrLogOut(recipe, contentMeal);
+        contentMeal.removeChild(logToSave);
+      } else {
+        document.addEventListener("visibilitychange", () => {
+          if (document.visibilityState === "hidden") {
+            saveRecipeOrLogOut(recipe, contentMeal);
+            contentMeal.removeChild(logToSave);
+          }
+        });
+      }
 
       input.value = "";
     })
@@ -115,7 +112,7 @@ formSearch.addEventListener("submit", (event) => {
       contentMeal.innerHTML = `<p>The recipe you searched for does not exist or could not be found.</p>`;
       contentMeal.classList.add("error");
       input.value = "";
-      //console.log(error);
+      console.log(error);
     });
 });
 
@@ -124,9 +121,50 @@ function clearContent() {
   contentMeal.innerHTML = "";
 }
 
-function goBackAndClose() {
-  if (window.opener) {
-    window.opener.focus(); // Bring the previous tab into focus
+function saveRecipeOrLogOut(recipe, contentMeal) {
+  const saveRecipeBtn = document.createElement("button");
+  saveRecipeBtn.innerText = "Save Recipe";
+  saveRecipeBtn.classList.add("saveRecipeBtn");
+
+  saveRecipeBtn.addEventListener("click", () => onClickedSave(recipe));
+  contentMeal.appendChild(saveRecipeBtn);
+
+  const logOut = document.createElement("button");
+  logOut.innerText = "Log Out";
+  logOut.classList.add("logOut");
+  logOut.addEventListener("click", () => onClickedLogOut(logOut));
+  contentMeal.appendChild(logOut);
+}
+
+function onClickedSave(recipe) {
+  const users = JSON.parse(localStorage.getItem("users"));
+
+  const user = users.find((user) => user.status === "loggedIn");
+  if (user) {
+    user.savedRecipes.push(recipe);
+    console.log(user);
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Recipe saved successfully!");
   }
-  window.close(); // Close the current tab
+}
+
+function onClickedLogOut(logOut) {
+  const users = JSON.parse(localStorage.getItem("users"));
+  const user = users.find((user) => user.status === "loggedIn");
+  if (user) {
+    user.status = "notLoggedIn";
+    localStorage.setItem("users", JSON.stringify(users));
+    logOut.remove();
+    window.location.reload();
+  }
+}
+
+function isLogged() {
+  const users = JSON.parse(localStorage.getItem("users"));
+  const user = users.find((user) => user.status === "loggedIn");
+  if (user) {
+    return true;
+  } else {
+    return false;
+  }
 }

@@ -17,15 +17,19 @@ loginBtn.addEventListener("click", (event) => {
       (user) => user.username === username && user.password === password
     );
     if (user) {
-      let userStatus = {
-        user: user,
-        status: "loggedIn",
-      };
-      sessionStorage.setItem("userStatus", JSON.stringify(userStatus));
-      self.opener = null;
-      window.close();
+      user.status = "loggedIn";
+      localStorage.setItem("users", JSON.stringify(users));
+      console.log(user.status);
+      goBackAndClose();
     } else {
       alert("Invalid username or password");
     }
   }
 });
+
+function goBackAndClose() {
+  if (window.opener) {
+    window.opener.focus(); // Bring the previous tab into focus
+  }
+  window.close(); // Close the current tab
+}

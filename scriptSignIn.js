@@ -20,6 +20,7 @@ signInForm.addEventListener("submit", (event) => {
       username: username,
       password: password,
       savedRecipes: [],
+      status: "",
     };
 
     saveUser(newUser);
