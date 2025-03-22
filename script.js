@@ -91,6 +91,7 @@ formSearch.addEventListener("submit", (event) => {
 
       const logToSave = document.createElement("a");
       logToSave.innerHTML = `<a href="login.html" target="_blank">Log to save recipe</a>`;
+      logToSave.classList.add("logToSave");
       contentMeal.appendChild(logToSave);
 
       if (isLogged()) {

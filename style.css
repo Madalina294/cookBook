@@ -92,7 +92,7 @@ form {
 .login h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #fff;
+  color: #f37628;
 }
 
 .login p {
@@ -188,6 +188,61 @@ form {
 }
 
 .goBackBtn:hover {
+  color: rgb(221, 158, 109);
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.saveRecipeBtn {
+  background-color: rgb(226, 98, 13);
+  color: rgb(255, 255, 255);
+  font-style: bold;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.saveRecipeBtn:hover {
+  color: rgb(221, 158, 109);
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.logToSave {
+  background-color: rgb(226, 98, 13);
+  color: rgb(255, 255, 255);
+  font-style: bold;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+.logToSave:hover {
+  color: rgb(243, 110, 9);
+  cursor: pointer;
+  background-color: #ecc5a1;
+}
+
+.logToSave a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.logOut{
+  background-color: rgb(241, 228, 78);
+  color: rgb(248, 116, 16);
+  font-style: bold;
+  padding: 0.5rem 0.5rem;
+  border: none;
+  border-radius: 0.5rem;  
+  margin-left: 1rem;
+  margin-bottom: 2rem;
+}
+.logOut:hover {
   color: rgb(221, 158, 109);
   cursor: pointer;
   background-color: #fff;
